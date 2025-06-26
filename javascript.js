@@ -1,7 +1,7 @@
 console.log("Execution begins.....");
 // 2 global variables to count the scores for yhe game for both sides
-let humanChoice = 0
-let computerChoice = 0
+let humanScore = 0
+let computerScore = 0
 
 
 // Take the human answer for rock-paper-scissors
@@ -26,6 +26,63 @@ function getComputerChoice() {
             return "scissors";
     }
 }
+
+
+// To play a single round of rock-paper-scissors
+function playRound(humanChoice, computerChoice) {
+    switch (humanChoice) {
+        // If user chooses rock
+        case "rock":
+            if (computerChoice == "scissors") {
+                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                humanScore ++;
+            }
+            else if (computerChoice == "rock") {
+                console.log(`Bore draw!!!! you both choose same!`);
+                
+            }
+            else {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore ++;
+            }
+            break;
+        // If user chooses paper
+        case "paper":
+            if (computerChoice == "paper") {
+                console.log(`Bore draw!!!! you both choose same!`);
+                
+            }
+            else if (computerChoice == "rock") {
+                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                humanScore ++;
+            }
+            else {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore ++;
+            }
+            break;
+        // If user chooses scissors
+        case "scissors":
+            if (computerChoice == "paper") {
+                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                humanScore ++;
+            }
+            else if (computerChoice == "rock") {
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                computerScore ++;
+                
+            }
+            else {
+                console.log(`Bore draw!!!! you both choose same!`);
+            }
+            break;
+    
+        default:
+            break;
+    }
+
+}
+
 
 
 
