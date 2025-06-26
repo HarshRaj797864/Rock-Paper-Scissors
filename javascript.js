@@ -6,7 +6,7 @@ let computerScore = 0
 
 // Take the human answer for rock-paper-scissors
 function getInputfromUser() {
-    let str = prompt("Rock-Paper-Scissors Shoot!!!!!");
+    let str = prompt("Rock-Paper-Scissor Shoot!!!!!");
     // To verify str
     console.log(`You entered ${str} `);
     // Convert all characters to lowercase for comparison in the future
@@ -23,7 +23,7 @@ function getComputerChoice() {
         case 2:
             return "paper";
         case 3:
-            return "scissors";
+            return "scissor";
     }
 }
 
@@ -33,7 +33,7 @@ function playRound(humanChoice, computerChoice) {
     switch (humanChoice) {
         // If user chooses rock
         case "rock":
-            if (computerChoice == "scissors") {
+            if (computerChoice == "scissor") {
                 
                 humanScore ++;
                 alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
@@ -68,7 +68,7 @@ function playRound(humanChoice, computerChoice) {
             }
             break;
         // If user chooses scissors
-        case "scissors":
+        case "scissor":
             if (computerChoice == "paper") {
                 humanScore ++;
                 alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
