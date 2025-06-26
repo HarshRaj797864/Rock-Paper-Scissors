@@ -34,46 +34,55 @@ function playRound(humanChoice, computerChoice) {
         // If user chooses rock
         case "rock":
             if (computerChoice == "scissors") {
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+                
                 humanScore ++;
+                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             else if (computerChoice == "rock") {
-                console.log(`Bore draw!!!! you both choose same!`);
+                humanScore ++;
+                computerScore ++;
+                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
                 
             }
             else {
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 computerScore ++;
+                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             break;
         // If user chooses paper
         case "paper":
             if (computerChoice == "paper") {
-                console.log(`Bore draw!!!! you both choose same!`);
+                
+                humanScore ++;
+                computerScore ++;
+                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
                 
             }
             else if (computerChoice == "rock") {
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 humanScore ++;
+                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             else {
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
                 computerScore ++;
+                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             break;
         // If user chooses scissors
         case "scissors":
             if (computerChoice == "paper") {
-                console.log(`You win! ${humanChoice} beats ${computerChoice}`);
                 humanScore ++;
+                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             else if (computerChoice == "rock") {
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+                
                 computerScore ++;
+                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
                 
             }
             else {
-                console.log(`Bore draw!!!! you both choose same!`);
+                humanScore ++;
+                computerScore ++;
+                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
             }
             break;
     
@@ -83,6 +92,39 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
+// Final function to play the complete game consisting of 5 rounds
+function playGame() {
+    // Number of rounds
+    round = 1;
+    // Loop to play 5 rounds
+    while (round <= 5) {
+        console.log(`Round Number: ${round}`);
+        // Input from user
+        const humanChoice = getInputfromUser();
+        // Random choice from computer 
+        const computerChoice = getComputerChoice();
+        playRound(humanChoice,computerChoice);
+        round ++;
+    }
+    // console.log();
+    // Final result
+    alert(`Final Score:-\nYour Score = ${humanScore}\nMy Score = ${computerScore}`);
+    
+    if (humanScore > computerScore) {
+        alert(`Hooray!!!! You won`);
+    }
+    else if (computerScore > humanScore) {
+        alert(`Noooooo!!! You lost!`);
+    }
+    else {
+        alert(`Boooooo! It was a Draw!!`);
+    }
 
+}
+
+// Verification
+playGame();
+console.log(humanScore);
+console.log(computerScore);
 
 
