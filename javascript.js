@@ -1,21 +1,16 @@
 console.log("Execution begins.....");
 // 2 global variables to count the scores for yhe game for both sides
-let humanScore = 0
-let computerScore = 0
+let humanScore = 0;
+let computerScore = 0;
+let roundsPlayed = 0;
+const totalRounds = 5;
 
 
-// Take the human answer for rock-paper-scissors
-function getInputfromUser() {
-    let str = prompt("Rock-Paper-Scissor Shoot!!!!!");
-    // To verify str
-    console.log(`You entered ${str} `);
-    // Convert all characters to lowercase for comparison in the future
-    return str.toLowerCase(); 
-}
+
 
 function getComputerChoice() {
     // Choose a random number between 1 and 3 to pick the three options
-    let result = Math.floor((Math.random()*3)) + 1;
+    let result = Math.floor((Math.random() * 3)) + 1;
     // Based on the random result choosing either rock , paper or scissor
     switch (result) {
         case 1:
@@ -27,138 +22,160 @@ function getComputerChoice() {
     }
 }
 
+const header = document.querySelector(".header");
+
+
+
+const scoreDisplay = document.createElement("div");
+scoreDisplay.id = "scoreDisplay";
+scoreDisplay.style.cssText = `
+    font-size: 24px;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+`;
+header.appendChild(scoreDisplay);
+
+const resultDisplay = document.createElement("div");
+resultDisplay.id = "resultDisplay";
+resultDisplay.style.cssText = `
+    font-size: 28px;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+`;
+header.appendChild(resultDisplay);
+
+
 
 // To play a single round of rock-paper-scissors
 function playRound(humanChoice, computerChoice) {
+    if (roundsPlayed >= totalRounds) {
+        return;
+    }
+    roundsPlayed ++;
     switch (humanChoice) {
         // If user chooses rock
         case "rock":
             if (computerChoice == "scissor") {
-                
-                humanScore ++;
-                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+
+                humanScore++;
+                scoreDisplay.textContent = `You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             else if (computerChoice == "rock") {
-                humanScore ++;
-                computerScore ++;
-                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
-                
+                humanScore++;
+                computerScore++;
+                scoreDisplay.textContent = `Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
+
             }
             else {
-                computerScore ++;
-                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+                computerScore++;
+                scoreDisplay.textContent = `You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             break;
         // If user chooses paper
         case "paper":
             if (computerChoice == "paper") {
-                
-                humanScore ++;
-                computerScore ++;
-                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
-                
+
+                humanScore++;
+                computerScore++;
+                scoreDisplay.textContent = `Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
+
             }
             else if (computerChoice == "rock") {
-                humanScore ++;
-                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+                humanScore++;
+                scoreDisplay.textContent = `You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             else {
-                computerScore ++;
-                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+                computerScore++;
+                scoreDisplay.textContent = `You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             break;
         // If user chooses scissors
         case "scissor":
             if (computerChoice == "paper") {
-                humanScore ++;
-                alert(`You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+                humanScore++;
+                scoreDisplay.textContent = `You win! ${humanChoice} beats ${computerChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             else if (computerChoice == "rock") {
-                
-                computerScore ++;
-                alert(`You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
-                
+
+                computerScore++;
+                scoreDisplay.textContent = `You lose! ${computerChoice} beats ${humanChoice}\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
+
             }
             else {
-                humanScore ++;
-                computerScore ++;
-                alert(`Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`);
+                humanScore++;
+                computerScore++;
+                scoreDisplay.textContent = `Bore draw!!!! you both choose same!\nYour Score:- ${humanScore}\nComputer Score:- ${computerScore}`;
             }
             break;
-    
+
         default:
             break;
     }
-
-}
-
-// Final function to play the complete game consisting of 5 rounds
-function playGame() {
-    // Number of rounds
-    round = 1;
-    // Loop to play 5 rounds
-    while (round <= 5) {
-        console.log(`Round Number: ${round}`);
-        // Input from user
-        const humanChoice = getInputfromUser();
-        // Random choice from computer 
-        const computerChoice = getComputerChoice();
-        playRound(humanChoice,computerChoice);
-        round ++;
-    }
-    // console.log();
-    // Final result
-    alert(`Final Score:-\nYour Score = ${humanScore}\nMy Score = ${computerScore}`);
     
-    if (humanScore > computerScore) {
-        alert(`Hooray!!!! You won`);
-    }
-    else if (computerScore > humanScore) {
-        alert(`Noooooo!!! You lost!`);
-    }
-    else {
-        alert(`Boooooo! It was a Draw!!`);
-    }
 
 }
 
-// Verification
-playGame();
-console.log(humanScore);
-console.log(computerScore);
 
 
-// Background
-const btn = document.querySelector("button");
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
 
-document.addEventListener("DOMContentLoaded", () => {
-  canvas.width = document.documentElement.clientWidth;
-  canvas.height = document.documentElement.clientHeight;
+
+function updateDisplay() {
+    
+
+    if (roundsPlayed >= totalRounds) {
+        if (humanScore > computerScore) {
+            resultDisplay.textContent = `You win the game! Final Score: ${humanScore}-${computerScore}`;
+        } else if (computerScore > humanScore) {
+            resultDisplay.textContent = `Computer wins the game! Final Score: ${humanScore}-${computerScore}`;
+        } else {
+            resultDisplay.textContent = `It's a tie! Final Score: ${humanScore}-${computerScore}`;
+        }
+        // Reset scores for a new game
+        humanScore = 0;
+        computerScore = 0;
+        roundsPlayed = 0;
+
+        // Clear both displays
+        scoreDisplay.textContent = "";
+        // (clear the result as well after a short delay)
+        setTimeout(() => {
+            resultDisplay.textContent = "";
+        }, 3000);
+
+        
+    }
+    
+
+}
+
+
+
+// Event listeners
+rock.addEventListener("click", () => {
+    playRound('rock', getComputerChoice());
+    updateDisplay();
+});
+paper.addEventListener("click", () => {
+    playRound('paper', getComputerChoice());
+    updateDisplay();
+});
+scissor.addEventListener("click", () => {
+    playRound('scissor', getComputerChoice());
+    updateDisplay();
 });
 
-function random(number) {
-  return Math.floor(Math.random() * number);
-}
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < 100; i++) {
-    ctx.beginPath();
-    ctx.fillStyle = "rgb(255 0 0 / 50%)";
-    ctx.arc(
-      random(canvas.width),
-      random(canvas.height),
-      random(50),
-      0,
-      2 * Math.PI,
-    );
-    ctx.fill();
-  }
-}
 
-btn.addEventListener("click", draw);
+
+
+
+
 
 
 
