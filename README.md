@@ -7,7 +7,7 @@ A simple Rock-Paper-Scissors game built using **HTML** and **JavaScript**. The g
 You can play this game locally by cloning the repo and opening `index.html` in your browser.
 
 ## 📂 Project Structure
-.
+
 ├── index.html # The HTML page that links the JavaScript
 
 ├── javascript.js # Core game logic written in JavaScript
