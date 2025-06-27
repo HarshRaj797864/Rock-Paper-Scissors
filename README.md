@@ -9,7 +9,11 @@ You can play this game locally by cloning the repo and opening `index.html` in y
 ## 📂 Project Structure
 .
 ├── index.html # The HTML page that links the JavaScript
+
 ├── javascript.js # Core game logic written in JavaScript
+
+├──style.css # Display style
+
 └── README.md # This file
 
 
