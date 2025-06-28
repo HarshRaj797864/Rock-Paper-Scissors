@@ -130,11 +130,11 @@ function updateDisplay() {
 
     if (roundsPlayed >= totalRounds) {
         if (humanScore > computerScore) {
-            resultDisplay.textContent = `You win the game! Final Score: ${humanScore}-${computerScore}`;
+            resultDisplay.textContent = `Hooray!!!!!!! You win the game! Final Score: ${humanScore}-${computerScore}`;
         } else if (computerScore > humanScore) {
-            resultDisplay.textContent = `Computer wins the game! Final Score: ${humanScore}-${computerScore}`;
+            resultDisplay.textContent = `No!!!!!!! Computer wins the game! Final Score: ${humanScore}-${computerScore}`;
         } else {
-            resultDisplay.textContent = `It's a tie! Final Score: ${humanScore}-${computerScore}`;
+            resultDisplay.textContent = `Booooo!!!!! It's a tie! Final Score: ${humanScore}-${computerScore}`;
         }
         // Reset scores for a new game
         humanScore = 0;
